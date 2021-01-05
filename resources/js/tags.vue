@@ -24,8 +24,8 @@
 								<td class="_table_name">{{tag.tagName}}</td>
 								<td>{{tag.created_at}}</td>
 								<td>
-									<Button type="info" ghost>Info</Button>
-									<Button type="error" ghost>Error</Button>
+									<Button type="info" ghost >Show</Button>
+									<Button type="error" ghost @click="deleteTag(tag.id)">Delete</Button>
 								</td>
 							</tr>
 
@@ -70,6 +70,15 @@ export default {
 			if(response.status==200){
 				this.success('successfully added');
 				this.data.tagName=''
+			}
+			else{
+				this.somethingWentWrong('something went wrong');
+			}
+		},
+		async deleteTag(id){
+			const response=await this.callApi('delete','/admintag/'+id);
+			if(response.status==200){
+				this.success('successfully deleted');
 			}
 			else{
 				this.somethingWentWrong('something went wrong');
