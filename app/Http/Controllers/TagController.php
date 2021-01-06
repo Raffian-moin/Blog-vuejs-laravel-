@@ -60,7 +60,7 @@ class TagController extends Controller
      */
     public function edit(tag $tag)
     {
-        //
+        
     }
 
     /**
@@ -70,9 +70,20 @@ class TagController extends Controller
      * @param  \App\Models\tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tag $tag)
+    public function update(Request $request,$tag)
     {
-        //
+        $editedTag=tag::find($tag);
+
+        if($editedTag){
+            $editedTag->tagName = $request->tagName;
+            $editedTag->save();
+        }else{
+            return "not found";
+        }
+
+        
+
+        
     }
 
     /**
@@ -81,8 +92,9 @@ class TagController extends Controller
      * @param  \App\Models\tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tag $tag)
+    public function destroy($tag)
     {
-        $tag->delete();
+        $deleteTag=tag::find($tag);
+        $deleteTag->delete();
     }
 }
