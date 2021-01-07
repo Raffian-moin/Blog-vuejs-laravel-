@@ -97,4 +97,10 @@ class TagController extends Controller
         $deleteTag=tag::find($tag);
         $deleteTag->delete();
     }
+
+    public function upload(Request $request){
+        $pic=time().'.'.$request->file->extension();
+        $request->file->move(public_path('uploads'),$pic);
+        return $pic;
+    }
 }

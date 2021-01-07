@@ -5,7 +5,8 @@ import VueRouter from 'vue-router'
 import Second from './second.vue'
 import Test from './test.vue'
 import Home from './home.vue'
-import Tags from './tags.vue'
+import Tags from './admin/components/pages/tags.vue'
+import Category from './admin/components/pages/category.vue'
 import myMixin from './common.js';
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
@@ -22,7 +23,7 @@ Vue.use(ViewUI);
 const routes = [
     { path: '/', component: Home },
     { path: '/tags', component: Tags },
-    { path: '/second', component: Second },
+    { path: '/category', component: Category },
     { path: '/test', component: Test },
     // { path: '*', component:  NotFoundComponent}
 

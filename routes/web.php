@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/admintag',TagController::class);
+Route::post('/upload',[TagController::class,'upload']);
 Route::get('{path}', function () {
     return view('welcome');
 })->where('path','([A-z\/_.\d-]+)?' );
