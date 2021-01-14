@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/admintag',TagController::class);
+Route::resource('/admincategory',CategoryController::class);
 Route::post('/upload',[TagController::class,'upload']);
+Route::post('/delete_iamge',[TagController::class,'deleteImage']);
 Route::get('{path}', function () {
     return view('welcome');
 })->where('path','([A-z\/_.\d-]+)?' );

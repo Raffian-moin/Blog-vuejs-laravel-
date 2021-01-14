@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return category::all();
     }
 
     /**
@@ -35,7 +35,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category=new category();
+        $category->categoryName=$request->categoryName;
+        if($request->categoryIconImage){
+            $categoryImagePath='/uploads/'.$request->categoryIconImage;
+            $category->categoryIconImage=$categoryImagePath;
+        }
+        $category->save();
+        return "ok";
     }
 
     /**

@@ -99,8 +99,20 @@ class TagController extends Controller
     }
 
     public function upload(Request $request){
+        $request->validate([
+        'file'=> 'required|mimes:jpg,bmp,png'
+        ]);
         $pic=time().'.'.$request->file->extension();
         $request->file->move(public_path('uploads'),$pic);
         return $pic;
+    }
+
+    public function deleteImage(Request $request){
+        $filename=$request->imageName;
+        $filepath=public_path().'/uploads/'.$filename;
+        if(file_exists($filepath)){
+            @unlink($filepath);
+        }
+        return "deleted";
     }
 }
